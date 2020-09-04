@@ -14,6 +14,7 @@ var flash = require('connect-flash');
 var bcrypt = require('bcryptjs');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+const ejs = require("ejs");
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
@@ -23,7 +24,13 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('public', path.join(__dirname, 'public'));
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
+// app.use(express.static("public"));
+// app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static('public'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -111,4 +118,4 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.listen(3000);
+app.listen(4000);
