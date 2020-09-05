@@ -16,9 +16,10 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 const ejs = require("ejs");
 var db = mongoose.connection;
-
+const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true , useUnifiedTopology:true});
 
 var app = express();
 
@@ -75,13 +76,59 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
+const postSchema = {
+  title: String,
+  content: String
+};
 
+const Post = mongoose.model("Post", postSchema);
+
+app.get("/", function(req, res){
+
+  Post.find({}, function(err, posts){
+    res.render("home", {
+      startingContent: homeStartingContent,
+      posts: posts
+      });
+  });
+});
+
+app.get("/compose", function(req, res){
+  res.render("compose");
+});
+
+app.post("/compose", function(req, res){
+  const post = new Post({
+    title: req.body.postTitle,
+    content: req.body.postBody
+  });
+
+
+  post.save(function(err){
+    if (!err){
+        res.redirect("/");
+    }
+  });
+});
+
+app.get("/posts/:postId", function(req, res){
+
+const requestedPostId = req.params.postId;
+
+  Post.findOne({_id: requestedPostId}, function(err, post){
+    res.render("post", {
+      title: post.title,
+      content: post.content
+    });
+  });
+
+});
 app.get('*', function(req, res, next){
   res.locals.user = req.user || null;
   next();
 });
 
-app.use('/', routes);
+
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -118,4 +165,5 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.listen(4000);
+
+app.listen(3000);
