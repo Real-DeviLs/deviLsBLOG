@@ -9,7 +9,7 @@
 
   <%posts.forEach(function(post){%>
   <h1><%=post.title%></h1>
-  <p><%=post.content%><a href="/posts/<%=post._id%>"></a></p>
+  <p><%-post.content%><a href="/posts/<%=post._id%>"></a></p>
 <%  })%>
 
 

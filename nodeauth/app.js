@@ -32,6 +32,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 // app.use(express.static("public"));
 // app.use(express.static(__dirname + '/public'));
 app.use('/public', express.static('public'));
+//tinymice integration
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -165,4 +168,4 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.listen(3000);
+app.listen(4000);
