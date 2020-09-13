@@ -1,0 +1,57 @@
+<%- include("partials/header"); -%>
+
+
+<section id="blog" class="section">
+  <div class="container">
+    <div class="row">
+      <!-- section title -->
+      <div class="title text-center wow fadeInDown">
+        <h2>Blog <span class="color">Posts</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+      <div class="clearfix">
+        <%posts.forEach(function(post){%>
+        <!-- single blog post -->
+        <article class="col-md-4 col-sm-6 col-xs-12 mb-30 clearfix wow fadeInUp" data-wow-duration="500ms">
+          <div class="post-block">
+            <div class="media-wrapper">
+              <img src="1.jpg" alt="no image" class="img-responsive">
+            </div>
+            <div class="content">
+              <h3><a href=""><%=post.title%></a></h3>
+              <p><%-post.content%></p>
+              <a class="btn btn-transparent" href="/posts/<%=post._id%>">Read more</a>
+            </div>
+          </div>
+        </article>
+        <!-- /single blog post -->
+        <%  })%>
+
+       
+      </div>
+      <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination pagination-lg">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a class="active" href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div> <!-- end row -->
+  </div> <!-- end container -->
+</section>
+
+
+<%- include("partials/footer"); -%>
