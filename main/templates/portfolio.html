@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang=" en ">
+    {% for i in portfolio %}
+
+<head>
+    <meta charset="utf-8" />
+    <title> Portfolio |{{ i.name }} </title>
+    <meta name="keywords" content="Websites ,Punjab ,India, Ludhiana ,Digital ,RealDevils ,technology,Developers, TechCommunity ">
+    <script src="https://kit.fontawesome.com/16987a8cac.js" crossorigin="anonymous"></script>
+    
+    <link rel='stylesheet'
+        href='{% static "css/one.css" %}' />
+    <!-- <link rel="stylesheet" href="/assets/css/custom-style.css" /> -->
+    <link rel='stylesheet'
+        href='{% static "css/two.css" %}' />
+    <link rel="stylesheet" href="{% static 'css/three.css' %}" />
+    <link rel='stylesheet'
+        href='{% static "css/four.css" %}' />
+    <!-- Fonts-->
+    <link href="{% static 'css/five.css' %}" rel="stylesheet" /> <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/gif" sizes="16x16" />
+    <script>
+        var base_url = '';
+    </script> <!-- Jquery -->
+    <script src="{% static 'js/one.js' %}">
+    </script> <!-- <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script> -->
+    <script src='{% static "js/two.js" %}'></script>
+    <script src='{% static "js/three.js" %}'></script>
+    <script src='{% static "js/four.js" %}'></script>
+    <script src='{% static "js/five.js" %}'></script>
+    <script src='{% static "js/six.js" %}'></script> <!-- for Mathjax support -->
+    <!-- Github Button -->
+    <script async defer src='{% static "js/seven.js" %}'></script>
+    <script src='{% static "js/eight.js" %}'
+        >
+    </script> <!-- (you can remove the below scripts but do buy me a coffee to show some support :) -->
+    
+    <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <html class="no-js">
+    <!--<![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="topNav"> 
+        <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation"> <span class="icono-hamburger" id="navbar-hamburger"> </span> </button> <a
+            class="navbar-brand" href="/">RealDevils</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'home' %}">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'blogs' %}">Blog</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'home' %}#contact-us">Contact</a> </li>
+            </ul>
+        </div>
+        <ul class="nav justify-content-end">
+           
+            
+            <li class="nav-item"> <input class="nav-link switch" id="theme-toggle" onclick="modeSwitcher() "
+                    type="checkbox" name="checkbox" /> </li>
+        </ul>
+    </nav> <!-- Search Form -->
+
+
+    <div class="search-form-container">
+        <form class="search-form">
+            <fieldset class="search-form__fieldset">
+                <div class="row">
+                    <div class="col-lg-8 offset-md-2"> <input class="search-form__field" placeholder="Type to Search..."
+                            autofocus> <input class="search-form__submit" type="submit" value="search"> </div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="row">
+            <div class="col-lg-8 offset-md-2 search-results">
+                <div class="card search-results"></div>
+            </div>
+        </div>
+        <div class="close-search-button search-form-container__close"> <i class="fa fa-times icon"></i> </div>
+    </div>
+
+
+    <div class="col-lg-12">
+        <div class="row ">
+            <div class="col-lg-4 offset-md-1">
+                <div class="card" id="profile-card"> <a href="#"> <img
+                            src="{{ i.image.url }}"
+                            class="profile-img" /> </a>
+                    <h1 class="profile-name">{{ i.name }}</h1>
+                    <p class="profile-bio">{{ i.tagline }}s</p>
+                    <!-- Place this tag where you want the button to render. --> <a class="github-button"
+                        href="{{ i.github_link }}" data-size="large"
+                        data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-show-count="true"
+                        aria-label="Follow @{{ i.github_usename }} on GitHub">Follow @{{ i.github_usename }}</a>
+                    <p class="profile-links"> 
+
+                                <a class="social-link" href="{{ i.github_link }}"> <i
+                                class="fab fa-github"></i> </a> 
+                                 
+                                <a class="social-link" href="{{ i.linkedin_link }}"> <i
+                                class="fab fa-linkedin-in"></i> </a>   </p>
+                    <h6><i class="fas fa-map-marker-alt"></i>{{ i.country }}</h6>
+                    <h6><i class="fas fa-envelope"></i> {{ i.email }}</h6>
+
+                </div>
+                <div class="card">
+                    <h1>Skills</h1>
+                    <p> {{ i.skills }}</p>
+
+                </div>
+                <div class="card">
+                    <h1>Coding Activity</h1>
+                    <!-- Wakatime ( Replace with your own wakatime embed config at https://wakatime.com )-->
+                    <!-- Languages -->
+                    <figure><embed
+                            src="{{ i.activity }}"></embed>
+                    </figure> <!-- Hours Coded -->
+                    <figure> <embed
+                            src="{{ i.languages }}"></embed>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card">
+                    <h1 class="card-title">About</h1>
+                    <p> {{ i.about }}</p>
+                </div>
+                <div id="author_projects" class="card">
+                    <h1 class="card-title">Projects</h1> <br />
+
+
+                    {% for j in project %}
+
+                    <div class="row" id="project-card">
+                        <div class="col-md-6"> <img
+                                src="{{ i.image.url }}"
+                                class="project-img" /> </div>
+                        <div class="col-md-4 center">
+                            <h4 class="experience-title">{{ j.title }}</h4>
+                            <h6 class="experience-info"></h6>
+                            <p class="experience-desc">{{ j.description }}</p>
+                            <p> <a class="project-link" href="{{ j.link }}">Click Me</a> </p>
+                        </div>
+                    </div> <br />
+                    {% endfor %}
+                </div>
+                <div class="card">
+                    <h1 class="card-title">Work Experience</h1> <br />
+
+                    {% for k in experience %}
+                    <div class="row">
+                        <div class="col-md-2"> <img
+                                src="{{ k.image.url }}"
+                                class="company-logo" /> </div>
+                        <div class="col-md-6">
+                            <h4 class="experience-title">{{ k.post }}</h4>
+                            <h6 class="experience-info">{{ k.company }}</h6>
+                            <p class="experience-desc">{{ k.description }}</p>
+                            <!-- <p><a href="https://google.com">https://google.com</a></p> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="card">
+                    <h1 class="card-title">Education</h1> <br />
+                        {% for l in education %}
+                    <div class="row">
+                        <div class="col-md-2"> <img
+                                src="{{ l.image.url }}"
+                                class="company-logo" /> </div>
+                        <div class="col-md-6">
+                            <h4 class="experience-title">{{ l.title }}</h4>
+                            <h6 class="experience-info">{{ l.institution }}</h6>
+                            <p><a href="{{ l.link }}">See More</a></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" id="newsletter_footer">
+        <!-- Mailchimp Newletters -->
+        <form
+            action="/send_news"
+            method="POST" id="mc-embedded-subscribe-form"  class="validate"
+            target="_blank" novalidate>
+            {% csrf_token %}
+            <div id="mc_embed_signup_scroll_footer"> <label for="mce-EMAIL_footer"> Signup for Weekly Newsletters from Community
+                    </label> 
+                    <input type="email" value="" name="email" class="email" id="mce-EMAIL_footer"
+                    placeholder="email address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <br />
+                <div class="clear"> <input type="submit" value="Subscribe" name="subscribe"
+                        id="mc-embedded-subscribe_footer" class="btn btn-lg btn-success"> </div>
+            </div>
+    </div>
+    {% endfor %}
+    <footer>
+        <p> RealDevils - Tech Community Ludhiana</p>
+    </footer>
+    <script>
+        var options = {
+            classname: 'my-class',
+            id: 'my-id'
+        };
+        var nanobar = new Nanobar(options);
+        nanobar.go(30);
+        nanobar.go(76);
+        nanobar.go(100);
+    </script>
+   
+    <script
+        src='{% static "js/mode.js" %}'>
+    </script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

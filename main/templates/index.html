@@ -1,0 +1,539 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+  <!--
+  End Fixed Navigation
+  ==================================== -->
+
+<!--
+		Start About Section
+		==================================== -->
+		<section class="bg-one about section">
+			<div class="container">
+				<div class="row">
+				
+					<!-- section title -->
+					<div class="title text-center wow fadeIn" data-wow-duration="1500ms" >
+						<h2>About <span class="color">Us</span> </h2>
+						<div class="border"></div>
+					</div>
+					<!-- /section title -->
+					
+					<!-- About item -->
+					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
+						<div class="block">							
+							<div class="icon-box">
+								<i class="fas fa-tools"></i>
+							</div>					
+							<!-- Express About Yourself -->
+							<div class="content text-center">
+								<h3 class="ddd">Smart Solutions</h3>								
+								<p>Automating businesses with digital solutions </p>
+							</div>
+						</div>
+					</div> 
+					<!-- End About item -->
+					
+					<!-- About item -->
+					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms">
+						<div class="block">
+							<div class="icon-box">
+								<i class="fab fa-angellist"></i>
+							</div>
+							<!-- Express About Yourself -->
+							<div class="content text-center">
+								<h3>Innovation and Youth</h3>
+								<p>Innovation and Ideas for Digitally Smart India</p>
+							</div>
+						</div>
+					</div> 
+					<!-- End About item -->
+					
+					<!-- About item -->					
+					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
+						<div class="block kill-margin-bottom">
+							<div class="icon-box">
+								<i class="fas fa-palette"></i>
+							</div>
+							<!-- Express About Yourself -->
+							<div class="content text-center">
+								<h3>Creativity </h3>
+								<p>Peer learning and Creativity go hand in hand</p>
+							</div>
+						</div>
+					</div> 
+					<!-- End About item -->
+					
+				</div> 		<!-- End row -->
+			</div>   	<!-- End container -->
+		</section>   <!-- End section -->
+
+		
+<!--
+Start Call To Action
+==================================== -->
+<section class="call-to-action section-sm bg-1 overly">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2>Design and Marketing </h2>
+				<p>From social media handling to creating a digital presence we can handle it all</p>
+				<a href="#contact-form" class="btn btn-main">Start a project with us</a>
+			</div>
+		</div> 		<!-- End row -->
+	</div>   	<!-- End container -->
+</section>   <!-- End section -->
+
+
+<!-- Start Team Skills
+		=========================================== -->
+		
+		<section id="team-skills" class="parallax-section section section-bg overly">
+			<div class="container">
+				<div class="row" >
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="title text-center">
+							<h2>Our <span class="color">Skills</span></h2>
+							<div class="border"></div>
+						</div>
+					</div>
+					<!-- /section title -->
+				</div>  		<!-- End row -->
+				<div class="row">
+					<div class="col-md-6">
+						<h2>We are refining our skill sets in all the domains</h2>
+							<p>Peer learning and practical apsects make one form new comfort zones</p>
+							<img class="img-responsive" src="{% static 'images/about/company-growth.png' %} " alt="">
+					</div>
+					<div class="col-md-6">
+						<ul class="skill-bar">
+
+						{% for i in skill  %}
+							<li>
+								<p><span>{{ forloop.counter }}-</span>{{ i.skill }}</p>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="{{ i.level }}"
+									aria-valuemax="100" style="width:{{ i.level }}%">
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>   	<!-- End container -->
+		</section>   <!-- End section -->
+
+<!-- Start Portfolio Section
+		=========================================== -->
+
+<section class="portfolio section" id="portfolio">
+	<div class="container">
+		<div class="row ">
+			<div class="col-lg-12">
+				<!-- section title -->
+				<div class="title text-center">
+					<h2>Our <span class="color">Works</span></h2>
+					<div class="border"></div>
+				</div>
+				<!-- /section title -->
+			</div> <!-- /end col-lg-12 -->
+		</div> <!-- end row -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="portfolio-filter">
+					<button class="active" type="button" data-filter="web">Web Development</button>
+					<button type="button" data-filter="app">App development</button>
+					<button type="button" data-filter="design">Design and Illustrations</button>
+					<button type="button" data-filter="seo">SEO</button>
+					<button type="button" data-filter="mkt">Marketing</button>
+					<button type="button" data-filter="misc">miscellaneous</button>
+				</div>
+			</div>
+		</div>
+		<div class="row filtr-container">
+			<div class="col-lg-4 filtr-item" data-category="web">
+				{% for i in projectWeb %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="images/portfolio/portfolio-1.jpg"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4 ><a class="text-rev" href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p class="text-rev">{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+
+
+
+			<div class="filtr-item col-md-4" data-category="app">
+				{% for i in projectApp %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p>{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+			<div class="filtr-item col-md-4" data-category="design">
+				{% for i in projectDesign %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p>{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+			<div class="filtr-item col-md-4" data-category="seo">
+				{% for i in projectSeo %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p>{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+			<div class="filtr-item col-md-4" data-category="mkt">
+				{% for i in projectMkt %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p>{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+			<div class="filtr-item col-md-4" data-category="misc">
+				{% for i in projectMisc %}
+				<div class="portfolio-block">
+					<img class="img-responsive" src="{{ i.image.url }}" alt="">
+					<div class="caption">
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
+							data-lightbox="image-1">
+							<i class="tf-ion-android-search"></i>
+						</a>
+						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
+						<p>{{ i.description }}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+
+			
+			
+		
+			
+		
+		</div>
+	</div> <!-- end container -->
+</section> <!-- End section -->
+
+<!--
+Start Counter Section
+==================================== -->
+		
+<section id="counter" class="parallax-section bg-1 section overly">
+	<div class="container">
+		<div class="row">
+		
+			<!-- first count item -->
+			<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms">
+				<div class="counters-item">
+					<i class="tf-ion-android-happy"></i>
+					<span data-speed="3000" data-to="320">17</span>
+					<h3>Happy Clients</h3>
+				</div>
+			</div>
+			<!-- end first count item -->
+		
+			<!-- second count item -->
+			<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="200ms">
+				<div class="counters-item">
+					<i class="tf-ion-archive"></i>
+					<span data-speed="3000" data-to="565">92</span>
+					<h3>Projects completed</h3>
+				</div>
+			</div>
+			<!-- end second count item -->
+		
+			<!-- third count item -->
+			<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="400ms">
+				<div class="counters-item">
+					<i class="tf-ion-thumbsup"></i>
+					<span data-speed="3000" data-to="95">21</span>
+					<h3>Positive feedback</h3>
+					
+				</div>
+			</div>
+			<!-- end third count item -->
+			
+			<!-- fourth count item -->
+			<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+				<div class="counters-item kill-margin-bottom">
+					<i class="fas fa-laptop-code"></i>
+					<span data-speed="3000" data-to="2500">80K+</span>
+					<h3>Lines of Code</h3>
+				</div>
+			</div>
+			<!-- end fourth count item -->
+			
+		</div> 		<!-- end row -->
+	</div>   	<!-- end container -->
+</section>   <!-- end section -->
+
+<!-- 
+Start Our Team
+=========================================== -->
+
+<section id="our-team" class="section">
+	<div class="container">
+		<div class="row">
+		
+			<!-- section title -->
+			<div class="title text-center wow fadeInUp" data-wow-duration="500ms">
+				<h2>Our <span class="color">Team</span></h2>
+				<div class="border"></div>
+			</div>
+			<!-- /section title -->
+			
+		
+
+			
+			{% for i in team %}
+			
+			<!-- team member -->
+			<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+               <div class="team-member">
+					<div class="member-photo">
+						<!-- member photo -->
+						<img class="img-responsive" src="{{ i.image.url }}" alt="Meghna">
+						<!-- /member photo -->
+						
+						<!-- member social profile -->
+						<div class="mask">
+							<ul class="list-inline">
+								<li><a href="{{ i.github_link }}"><i class="tf-ion-social-github"></i></a></li>
+								<!-- <li><a href="#"><i class="tf-ion-social-twitter"></i></a></li> -->
+								<li><a href="{{ i.linkedin_link }}"><i class="tf-ion-social-linkedin"></i></a></li>
+								<!-- <li><a href="#"><i class="tf-ion-social-dribbble-outline"></i></a></li> -->
+							</ul>
+						</div>
+						<!-- /member social profile -->
+					</div>
+					
+					<!-- member name & designation -->
+					<div class="member-meta">
+						<h4><a href="{% url 'portfolio' name=i.name %}">{{ i.name }}</a></h4>
+						<span>{{ i.skills }}</span>
+						<p>{{ i.about }}</p>
+					</div>
+					<!-- /member name & designation -->
+					<!-- /about member -->
+               </div>
+            </div>
+			<!-- end team member -->
+			{% endfor %}
+
+		</div>  	<!-- End row -->
+	</div>   	<!-- End container -->
+</section>   <!-- End section -->
+		
+
+
+<!-- Start Testimonial
+		=========================================== -->
+
+<section id="testimonial" class="testimonial overly section bg-2">
+	<div class="container">
+		<div class="row">				
+			<div class="col-lg-12">
+				<!-- testimonial wrapper -->
+				<div id="testimonials" class="wow fadeInUp" data-wow-duration="500ms" data-wow-delay="100ms" >
+					{% for i in th %}
+					<!-- testimonial single -->
+					<div class="item text-center">
+						
+						<!-- client photo -->
+						<div class="client-thumb">
+							<img src="{{ i.images.url }}" class="img-responsive" alt="Meghna">
+						</div>
+						<!-- /client photo -->
+						
+						<!-- client info -->
+						<div class="client-info">
+							<div class="client-meta">
+								<h3>{{ i.author }}</h3>
+								<span>{{ i.day }}</span>
+							</div>
+							<div class="client-comment">
+								<p>{{ i.thought }}</p>
+							</div>
+						</div>
+						<!-- /client info -->
+					</div>
+					<!-- /testimonial single -->
+					{% endfor %}
+					
+					
+				</div>		<!-- end testimonial wrapper -->
+			</div> 		<!-- end col lg 12 -->
+		</div>	    <!-- End row -->
+	</div>       <!-- End container -->
+</section>    <!-- End Section -->
+
+<!-- Start Blog Section =========================================== -->
+		
+<section id="blog" class="section">
+	<div class="container">
+		<div class="row">
+			<!-- section title -->
+			<div class="title text-center wow fadeInDown">
+				<h2> Latest <span class="color">Posts</span></h2>
+				<div class="border"></div>
+			</div>
+			<!-- /section title -->
+			<div class="clearfix">
+
+				{% for i in blog %}
+				<!-- single blog post -->
+				<article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+					<div class="post-block">
+						<div class="media-wrapper">
+							<img src="{{ i.images.url }}" alt="technical Blog Tech community" class="img-responsive">
+						</div>
+						<div class="content">
+							<h3><a href="{% url 'blog_author' author=i.author %}">{{ i.name }}</a></h3>
+							<p>{{ i.description }}</p>
+							<a class="btn btn-transparent" href="{% url 'blog' name=i.name %}">Read more</a>
+						</div>
+					</div>						
+				</article>
+				<!-- /single blog post -->
+				{% endfor %}
+				
+			</div>
+			<div class="all-post text-center">
+				<a class="btn btn-main" href="blog.html">View All Post</a>
+			</div>
+		</div> <!-- end row -->
+	</div> <!-- end container -->
+</section> <!-- end section -->
+
+<!-- Srart Contact Us
+=========================================== -->		
+<section id="contact-us" class="contact-us section-bg">
+	<div class="container">
+		<div class="row">
+			
+			<!-- section title -->
+			<div class="title text-center wow fadeIn" data-wow-duration="500ms">
+				<h2>Get In <span class="color">Touch</span></h2>
+				<div class="border"></div>
+			</div>
+			<!-- /section title -->
+			
+			<!-- Contact Details -->
+			<div class="contact-info col-md-6 wow fadeInUp" data-wow-duration="500ms">
+				<h3>About US</h3>
+				<p>We are a group of Tech Enthusiasts creating and building stuff together for a Digitally Empowered India<br>
+				All technical stacks and Digital Solutions are available</p>
+				<div class="contact-details">
+					<div class="con-info clearfix">
+						<i class="tf-map-pin"></i>
+						<span>Ludhiana , Punjab (INDIA)</span>
+					</div>
+					
+					<div class="con-info clearfix">
+						<i class="tf-ion-ios-telephone-outline"></i>
+						<span>Phone: +91 7889187722</span>
+					</div>
+					
+					
+					
+					<div class="con-info clearfix">
+						<i class="tf-ion-ios-email-outline"></i>
+						<span>ludhianatechcom@gmail.com</span>
+					</div>
+				</div>
+			</div>
+			<!-- / End Contact Details -->
+				
+			<!-- Contact Form -->
+			<div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+				<form id="contact-form" method="post" action="{% url 'home' %}" role="form">
+					{% csrf_token %}
+					<div class="form-group">
+						<input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
+					</div>
+					
+					<div class="form-group">
+						<input type="email" placeholder="Your Email" class="form-control" name="email" id="email">
+					</div>
+					
+					<div class="form-group">
+						<input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
+					</div>
+					
+					<div class="form-group">
+						<textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>	
+					</div>
+					
+					
+					
+					<button type="submit" class="btn btn-transparent"> Send Message</button>
+											
+					
+				</form>
+			</div>
+			<!-- ./End Contact Form -->
+		
+		</div> <!-- end row -->
+	</div> <!-- end container -->
+	
+	
+</section> <!-- end section -->
+	
+
+<!-- end Contact Area
+		========================================== -->
+
+        {% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+{% load static %}
+{% block content %}
+
+<div class="container pt-5">
+<body id="body">
+
+
+
+<section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+          <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="">
+          </a>
+
+          <h2 class="text-center">Newsletter portal Staff only</h2>
+          
+       </div>
+          <form class="text-left clearfix" action='send_news'  method="POST" >
+            {% csrf_token %}
+
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-main text-center" >Send Newsletter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+{% endblock content%}

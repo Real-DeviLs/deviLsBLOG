@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<section id="blog" class="section">
+  <div class="container">
+    <div class="row">
+      <!-- section title -->
+      <div class="title text-center wow fadeInDown">
+        <h2>Blog <span class="color">Posts</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+      <div class="clearfix">
+		<!-- single blog post -->
+		
+		{% for i in context %}
+        <article class="col-md-4 col-sm-6 col-xs-12 mb-30 clearfix wow fadeInUp" data-wow-duration="500ms">
+          <div class="post-block">
+            <div class="media-wrapper">
+              <img src="{{ i.images.url }}" alt="amazing caves coverimage" class="img-responsive">
+            </div>
+            <div class="content">
+              <h3><a href="{% url 'blog_author' author=i.author %}">{{ i.name }}</a></h3>
+              <p>{{ i.description }}</p>
+              <a class="btn btn-transparent" href="{% url 'blog' name=i.name %}">Read more</a>
+            </div>
+          </div>
+		</article>
+		{% endfor %}
+        <!-- /single blog post -->
+
+       
+	  </div>
+	  
+
+	  {% if context.has_other_pages %}
+
+      <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination pagination-lg">
+			{% if context.has_previous %}
+
+          <li>
+			  
+            <a href="{% url 'blogs' %}?page={{ context.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+		  </li>
+	  {% endif %}
+		  
+          <li>{{ context.number }}  / {{ context.paginator.num_pages }}</li>
+		  {% if context.has_next %}	
+		  
+          <li>
+            <a href="{% url 'blogs' %}?page={{ context.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+		  </li>
+	  {% endif %}
+		  
+        </ul>
+	  </nav>
+	  
+	  {% endif %}
+
+    </div> <!-- end row -->
+  </div> <!-- end container -->
+</section> <!-- end section -->
+
+<!-- end Contact Area
+		========================================== -->
+
+		{% endblock content%}

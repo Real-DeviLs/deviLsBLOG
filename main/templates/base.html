@@ -1,0 +1,234 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content=" Pod where curiosity germinates ">
+	<meta name="keywords" content="Websites ,Punjab ,India, Ludhiana ,Digital ,RealDevils ,technology,Developers, TechCommunity ">
+	<meta name="author" content="RealDevils">
+
+	<title>RealDevils| Pod where curiosity germinates</title>
+
+	<!-- Mobile Specific Meta
+		================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/16987a8cac.js" crossorigin="anonymous"></script>
+
+	<!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/gif" sizes="16x16" />
+
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" /> -->
+
+	<!-- CSS
+		================================================== -->
+	<!-- Fontawesome Icon font -->
+	<link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}">
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'plugins/animate-css/animate.css' %} ">
+	<!-- Magnific popup css -->
+	<link rel="stylesheet" href=" {% static 'plugins/magnific-popup/dist/magnific-popup.css' %} ">
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %} ">
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %} ">
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %} ">
+
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="50">
+	<!--
+	    Start Preloader
+	    ==================================== -->
+	<div class="preloader">
+		<div class="sk-cube-grid">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+	</div>
+	<!-- End Preloader
+        ==================================== -->
+
+
+		{% if request.path == "/" %}
+ <!--
+Welcome Slider
+==================================== -->
+
+<section class="hero-area overlay" style="background-image: url('{% static 'images/1.jpg' %} ');">
+	<!-- <video autoplay muted loop class="hero-video">
+		<source src="images/banner/hero-video.mp4" type="video/mp4">
+	</video> -->
+	<div class="block">
+		
+		<h1>Tech Community Ludhiana</h1>
+		<p>A Union of Like minded folks creating stuff together , learning together , growing together <br>
+		A pod where curiosity germinates</p>
+		<a data-scroll href="#our-team" class="btn btn-transparent">Meet Our Team</a>
+	</div>
+</section>
+
+
+{% endif %}
+<div class="theme-switch-wrapper">
+	<label class="theme-switch" for="checkbox">
+		<input type="checkbox" id="checkbox" />
+		<div class="slider round"></div>
+  </label>
+  <em>Call vampires</em>
+</div>
+
+
+ <!-- 
+  Fixed Navigation
+  ==================================== -->
+    <header id="navigation" class="navbar navigation">
+        <div class="container">
+            <div class="navbar-header">
+              <!-- responsive nav button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- /responsive nav button -->
+    
+                <!-- logo -->
+                <a class="navbar-brand logo" href="#body">
+                    <img src="{% static 'images/logo.png' %} " alt="Real-DEvils tech logo" style="height: 80px; width: 80px;" />
+                    
+                </a>
+            <!-- /logo -->
+        </div>
+
+        <!-- main nav -->
+        <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+            <ul id="nav" class="nav navbar-nav navigation-menu">
+                <li><a data-scroll href="{% url 'home' %}">Home</a></li>
+                <!-- <li><a data-scroll href="{% url 'home' %}">About Us</a></li> -->
+                <li><a data-scroll href="{% url 'home' %}#our-team">Team</a></li>
+                <li><a data-scroll href="{% url 'blogs' %}">Blog</a></li>
+                <li><a data-scroll href="{% url 'home' %}#contact-us">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- /main nav -->
+  
+	  </div>
+	 
+  </header>
+  <!--
+  End Fixed Navigation
+  ==================================== -->
+
+  {% if messages %}
+  {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+          {{message}}
+      </div>
+  {% endfor %}
+  {% endif %}
+
+{% block content %}
+
+
+
+{% endblock content %}
+
+		<footer id="footer" class="bg-one">
+			<div class="container">
+				<div class="row wow fadeInUp" data-wow-duration="500ms">
+					<div class="col-lg-12">
+		
+						<!-- Footer Social Links -->
+						<div class="social-icon">
+							<ul class="list-inline">
+								
+								<li><a href="https://github.com/Real-DeviLs"><i class="fab fa-github"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UCTfL6efr_FrlP2WcmoJ4jGA"><i class="fab fa-youtube"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/anubhav-gupta-6b87711b0/"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
+						<!--/. End Footer Social Links -->
+		
+						<!-- copyright -->
+						<div class="copyright text-center">
+							<a href="{% url 'home' %}">
+								<img src="{% static 'images/logo.png' %} " alt="Real-DEvils tech logo" style="height: 200px; width: 200px;" />
+								
+							</a>
+							<br />
+		
+						</div>
+						<!-- /copyright -->
+		
+					</div> <!-- end col lg 12 -->
+				</div> <!-- end row -->
+			</div> <!-- end container -->
+		</footer> <!-- end footer -->
+		
+		
+				<!-- 
+				Essential Scripts
+				=====================================-->
+				<!-- For Dark Mode Togg;le -->
+				
+				<!-- Main jQuery -->
+				<script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+				<!-- Bootstrap 3.1 -->
+				<script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+				<!-- Slick Carousel -->
+				<script type="text/javascript" src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+				<!-- Portfolio Filtering -->
+				<script type="text/javascript" src="{% static 'plugins/filterzr/jquery.filterizr.min.js' %}"></script>
+				<!-- Smooth Scroll -->
+				<script type="text/javascript" src="{% static 'plugins/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+				<!-- Magnific popup -->
+				<script type="text/javascript" src="{% static 'plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+				<!-- Google Map API -->
+				<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
+				<!-- Sticky Nav -->
+				<script type="text/javascript" src="{% static 'plugins/Sticky/jquery.sticky.js' %}"></script>
+				<!-- Number Counter Script -->
+				<script type="text/javascript" src="{% static 'plugins/count-to/jquery.countTo.js' %}"></script>
+				<!-- wow.min Script -->
+				<script type="text/javascript" src="{% static 'plugins/wow/dist/wow.min.js' %}"></script>
+				<!-- Custom js -->
+				<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+				<script>const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+				function switchTheme(e) {
+					console.log("aagaye babbe function ch")
+					if (e.target.checked) {
+						document.documentElement.setAttribute('data-theme', 'dark');
+						localStorage.setItem('theme', 'dark'); //add this
+					}
+					else {
+						document.documentElement.setAttribute('data-theme', 'light');
+						localStorage.setItem('theme', 'light'); //add this
+					}    
+				}
+
+					
+					toggleSwitch.addEventListener('change', switchTheme, false);</script>
+			</body>
+		</html>
