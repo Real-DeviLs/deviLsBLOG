@@ -154,12 +154,14 @@ Start Call To Action
 			</div>
 		</div>
 		<div class="row filtr-container">
-			<div class="col-lg-4 filtr-item" data-category="web">
-				{% for i in projectWeb %}
+			{% for i in projectWeb %}
+			<div class="filtr-item col-md-4" data-category="web">
+			
+				
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
-						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="images/portfolio/portfolio-1.jpg"
+						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
 							<i class="tf-ion-android-search"></i>
 						</a>
@@ -167,14 +169,14 @@ Start Call To Action
 						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 
 			</div>
+			{% endfor %}
 
 
-
+			{% for i in projectApp %}
 			<div class="filtr-item col-md-4" data-category="app">
-				{% for i in projectApp %}
+			
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
@@ -186,12 +188,13 @@ Start Call To Action
 						<p>{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 				
 			</div>
+			{% endfor %}
 
+			{% for i in projectDesign %}
 			<div class="filtr-item col-md-4" data-category="design">
-				{% for i in projectDesign %}
+		
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
@@ -203,12 +206,13 @@ Start Call To Action
 						<p>{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 				
 			</div>
+			{% endfor %}
+
+			{% for i in projectSeo %}
 
 			<div class="filtr-item col-md-4" data-category="seo">
-				{% for i in projectSeo %}
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
@@ -220,12 +224,13 @@ Start Call To Action
 						<p>{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 				
 			</div>
+			{% endfor %}
+
+			{% for i in projectMkt %}
 
 			<div class="filtr-item col-md-4" data-category="mkt">
-				{% for i in projectMkt %}
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital marketing">
 					<div class="caption">
@@ -237,12 +242,13 @@ Start Call To Action
 						<p>{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 				
 			</div>
+			{% endfor %}
+
+			{% for i in projectMisc %}
 
 			<div class="filtr-item col-md-4" data-category="misc">
-				{% for i in projectMisc %}
 				<div class="portfolio-block">
 					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
@@ -254,9 +260,10 @@ Start Call To Action
 						<p>{{ i.description }}</p>
 					</div>
 				</div>
-				{% endfor %}
 				
 			</div>
+			{% endfor %}
+
 
 			
 			
