@@ -27,7 +27,7 @@ SECRET_KEY = '+-x3smznm(2ic)e)x#ydag@-9@rpsmx=7gc(49k6xs+=uxbnh&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -92,8 +92,13 @@ EMAIL_HOST_PASSWORD = 'fvmozldcqazvgtim'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'realdevils',
+	'USER':'realdevils',
+	'PASSWORD':'25654',
+	'HOST':'localhost',
+	'PORT':'5432',
     }
 }
 
@@ -136,5 +141,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
