@@ -370,8 +370,8 @@ Start Our Team
 					<!-- member name & designation -->
 					<div class="member-meta">
 						<h4><a href="{% url 'portfolio' name=i.name %}">{{ i.name }}</a></h4>
-						<span>{{ i.skills }}</span>
-						<p>{{ i.about }}</p>
+						<span>{{ i.skills|truncatewords:9 }}</span>
+						<p>{{ i.about|truncatewords:10 }}</p>
 					</div>
 					<!-- /member name & designation -->
 					<!-- /about member -->
