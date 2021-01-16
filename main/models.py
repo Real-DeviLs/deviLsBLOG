@@ -48,3 +48,5 @@ class Projects(models.Model):
     image           = models.ImageField(upload_to="projects/",default="")
     category        = models.CharField(choices=category_choices,max_length=50)
     title           = models.CharField(max_length=90)
+    def __str__(self):
+        return self.title
