@@ -32,7 +32,7 @@ class Blog(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return self.name
+        return "/blog/"+self.name
 
 
 class BlogComment(models.Model):

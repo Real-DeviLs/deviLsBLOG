@@ -5,7 +5,7 @@ from portfolio.models import Portfolio
 from blog.models import Blog
 class StaticViewSitemap(sitemaps.Sitemap):
     def items(self):
-        return ['home' , 'newsletter' , 'blogs' , 'blog' , 'blog_author' , 'blog_cat']
+        return ['home' , 'newsletter']
     def location(self , item):
         return reverse(item) 
 
