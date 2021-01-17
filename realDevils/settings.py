@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tinymce',
     'portfolio',
     'newsletter',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

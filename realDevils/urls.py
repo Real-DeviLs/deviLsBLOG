@@ -21,8 +21,16 @@ import main
 import blog
 import newsletter
 
+from main.sitemaps import StaticViewSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps={
+    'static':StaticViewSitemap
+}
+
 
 urlpatterns = [
+    path('sitemap.xml' , sitemap , {'sitemaps':sitemaps}),
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
     path('',include('blog.urls')),
