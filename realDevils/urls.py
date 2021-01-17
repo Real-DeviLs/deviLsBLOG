@@ -21,16 +21,17 @@ import main
 import blog
 import newsletter
 
-from main.sitemaps import StaticViewSitemap
+from main.sitemaps import StaticViewSitemap,PortfolioSitemap
 from django.contrib.sitemaps.views import sitemap
 
 sitemaps={
     'static':StaticViewSitemap
+    'snippet':PortfolioSitemap
 }
 
 
 urlpatterns = [
-    path('sitemap.xml' , sitemap , {'sitemaps':sitemaps}),
+    path('sitemap.xml/' , sitemap , {'sitemaps':sitemaps}),
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
     path('',include('blog.urls')),
