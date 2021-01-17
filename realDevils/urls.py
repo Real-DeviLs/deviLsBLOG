@@ -21,12 +21,13 @@ import main
 import blog
 import newsletter
 
-from main.sitemaps import StaticViewSitemap,PortfolioSitemap
+from main.sitemaps import StaticViewSitemap,PortfolioSitemap,BlogSitemap
 from django.contrib.sitemaps.views import sitemap
 
 sitemaps={
-    'static':StaticViewSitemap
-    'snippet':PortfolioSitemap
+    'static':StaticViewSitemap,
+    'portfolio': PortfolioSitemap,
+    'blog':BlogSitemap
 }
 
 
