@@ -74,3 +74,7 @@ def home(request):
 
     }
     return render(request,'index.html',context)
+
+def zoho(request):
+
+    return render(request,'verifyforzoho.html')
