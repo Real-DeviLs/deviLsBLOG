@@ -13,7 +13,7 @@ class Blog(models.Model):
     sno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     
-    content = HTMLField()
+    content = models.TextField(default = " hey ")
 
     author = models.CharField(max_length=20)
 
