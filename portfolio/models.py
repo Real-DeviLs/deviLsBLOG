@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from meta.models import ModelMeta
 # Create your models here.
 
 
 Trend_CHOICES = (("Y", "Yes"), ("N", "No"))
 
 
-class Portfolio(models.Model):
+class Portfolio(ModelMeta,models.Model):
     user                = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True,unique=False)
     name                = models.CharField(max_length=50)
     tagline             = models.TextField()
