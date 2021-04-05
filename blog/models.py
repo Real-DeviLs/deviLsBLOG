@@ -2,6 +2,8 @@ from django.db import models
 from tinymce.models import HTMLField
 from django.utils.timezone import now
 from django.contrib.auth.models import User
+from meta.models import ModelMeta
+
 
 # from tinymce.widgets import toolbar
 
@@ -9,11 +11,11 @@ from django.contrib.auth.models import User
 Trend_CHOICES = (("Y", "Yes"), ("N", "No"))
 
 
-class Blog(models.Model):
+class Blog(ModelMeta,models.Model):
     sno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     
-    content = HTMLField()
+    content = models.TextField(default = " hey ")
 
     author = models.CharField(max_length=20)
 
@@ -30,6 +32,31 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.name
+        
+    def get_absolute_url(self):
+        return "/blog/"+self.name
+    
+    def keywords(self):
+        
+        keys = []
+        keys.append(self.name)
+        keys.append(self.category)
+        keys.append(self.author)
+        return keys 
+
+
+    _metadata = {
+        'description': 'description',
+        'image': 'get_meta_image',
+        'keywords':'keywords',
+        'title':'get_title',
+    }
+
+    def get_title(self):
+        return 'RealDevils|Blog:'+self.name
+    def get_meta_image(self):
+        if self.images:
+            return self.images.url
 
 
 class BlogComment(models.Model):

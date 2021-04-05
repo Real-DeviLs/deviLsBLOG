@@ -26,6 +26,9 @@
     [dir="rtl"] .filtered .actions {
         margin-right: 0;
         margin-left: 230px;
+    [dir="rtl"] .filtered .actions,
+    [dir="rtl"] #changelist-filter {
+        margin-left: 0;
     }
 
     [dir="rtl"] .inline-group ul.tools a.add,
@@ -78,6 +81,11 @@
     }
 
     [dir="rtl"] .aligned ul {
+        margin-right: 0;
+    }
+
+    [dir="rtl"] #changelist-filter {
+        margin-left: 0;
         margin-right: 0;
     }
 }

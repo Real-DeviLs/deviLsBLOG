@@ -185,7 +185,7 @@ Start Call To Action
 							<i class="tf-ion-android-search"></i>
 						</a>
 						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
-						<p>{{ i.description }}</p>
+						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
 				
@@ -203,7 +203,7 @@ Start Call To Action
 							<i class="tf-ion-android-search"></i>
 						</a>
 						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
-						<p>{{ i.description }}</p>
+						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
 				
@@ -221,7 +221,7 @@ Start Call To Action
 							<i class="tf-ion-android-search"></i>
 						</a>
 						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
-						<p>{{ i.description }}</p>
+						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
 				
@@ -239,7 +239,7 @@ Start Call To Action
 							<i class="tf-ion-android-search"></i>
 						</a>
 						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
-						<p>{{ i.description }}</p>
+						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
 				
@@ -257,7 +257,7 @@ Start Call To Action
 							<i class="tf-ion-android-search"></i>
 						</a>
 						<h4><a href="{{ i.link }}">{{ i.title }}</a></h4>
-						<p>{{ i.description }}</p>
+						<p class="text-rev">{{ i.description }}</p>
 					</div>
 				</div>
 				
@@ -369,7 +369,7 @@ Start Our Team
 					
 					<!-- member name & designation -->
 					<div class="member-meta">
-						<h4><a href="{% url 'portfolio' name=i.name %}">{{ i.name  }}</a></h4>
+						<h4><a href="{% url 'portfolio' name=i.name %}">{{ i.name }}</a></h4>
 						<span>{{ i.skills|truncatewords:9 }}</span>
 						<p>{{ i.about|truncatewords:10 }}</p>
 					</div>
@@ -459,7 +459,7 @@ Start Our Team
 				
 			</div>
 			<div class="all-post text-center">
-				<a class="btn btn-main" href="blog.html">View All Post</a>
+				<a class="btn btn-main" href="{% url 'blogs' %}">View All Post</a>
 			</div>
 		</div> <!-- end row -->
 	</div> <!-- end container -->

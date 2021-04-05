@@ -24,7 +24,29 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return "/portfolio/"+self.name
+	
+    def keywords(self):
+        
+        keys = []
+        keys.append(self.name)
+        keys.append(self.skills)
+        return keys 
 
+
+    _metadata = {
+        'description': 'description',
+        'image': 'get_meta_image',
+        'keywords':'keywords',
+        'title':'get_title',
+    }
+
+    def get_title(self):
+        return 'RealDevils|Portfolio:'+self.name
+    def get_meta_image(self):
+        if self.images:
+            return self.image.url
 
 
 

@@ -27,7 +27,7 @@ SECRET_KEY = '+-x3smznm(2ic)e)x#ydag@-9@rpsmx=7gc(49k6xs+=uxbnh&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'register_login',
     'social_django',
+    'django.contrib.sitemaps',
+    'meta',  #maintian this at the end 
+
 ]
 
 MIDDLEWARE = [
@@ -99,12 +102,49 @@ EMAIL_HOST_PASSWORD = 'fvmozldcqazvgtim'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+#         'NAME': 'realdevils',
+# 	'USER':'realdevils',
+# 	'PASSWORD':'25654',
+# 	'HOST':'localhost',
+# 	'PORT':'5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
+
+
+
+#for Django-meta : SEO configuration
+META_USE_TITLE_TAG = True
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN  = 'localhost:8000'
+META_INCLUDE_KEYWORDS = ['Realdevils',
+                        'Tech Community Ludhiana',
+                        'Developers Community',
+                        'Coding',
+                        'Freelancing',
+                        'Workaholics',
+                        'Peer Learning',
+                        'Anubhav Gupta',
+                        'Sayam Kumar',
+                        'Learning',
+                        'Blogs',
+                        'Portfolio Builder',
+                        'Free For All',
+                        ]
+
 
 
 # Password validation
@@ -159,5 +199,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

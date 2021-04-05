@@ -1,5 +1,10 @@
 {% load static %}
 {% load widget_tweaks %}
+{% load meta %}
+
+
+
+
 {% load crispy_forms_tags %}
 
 
@@ -7,9 +12,11 @@
 <html lang=" en ">
 
 <head>
+	{% include 'meta/meta.html' %}
+
     <meta charset="utf-8" />
-    <title> Portfolio |{{ portfolio.name }} </title>
-    <meta name="keywords" content="Websites ,Punjab ,India, Ludhiana ,Digital ,RealDevils ,technology,Developers, TechCommunity ">
+    <!-- <title> Portfolio |{{ portfolio.name }} </title> -->
+    <!-- <meta name="keywords" content="Websites ,Punjab ,India, Ludhiana ,Digital ,RealDevils ,technology,Developers, TechCommunity "> -->
     <script src="https://kit.fontawesome.com/16987a8cac.js" crossorigin="anonymous"></script>
     
     <link rel='stylesheet'

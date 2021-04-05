@@ -24,7 +24,19 @@ import newsletter
 import portfolio
 import register_login
 from django.contrib.auth.views import LogoutView
+
+from main.sitemaps import StaticViewSitemap,PortfolioSitemap,BlogSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps={
+    'static':StaticViewSitemap,
+    'portfolio': PortfolioSitemap,
+    'blog':BlogSitemap
+}
+
+
 urlpatterns = [
+    path('sitemap.xml/' , sitemap , {'sitemaps':sitemaps}),
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
     path('',include('blog.urls')),
@@ -37,5 +49,4 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(template_name=settings.LOGOUT_REDIRECT_URL),name='logout'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

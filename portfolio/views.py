@@ -4,6 +4,8 @@ from django.core.files.storage import FileSystemStorage
 from .forms import PortfolioForm ,EducationForm,PortfolioForm,ProjectForm,ExperienceForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from realDevils.seo_meta import Meta
+
 # for pdf printing
 
 
@@ -14,12 +16,15 @@ def portfolio(request,name):
     project    = Project.objects.filter(portfolio=portfolio[0]) 
     experience = Experience.objects.filter(portfolio=portfolio[0]) 
     education  = Education.objects.filter(portfolio=portfolio[0]) 
+    meta =      portfolio[0].as_meta()
+
 
     context = {
         'portfolio':portfolio,
         'project':project,
         'experience':experience,
         'education':education,
+        'meta':meta,
     }
 
     return render(request,'portfolio.html',context)
@@ -27,6 +32,14 @@ def portfolio(request,name):
 
 @login_required
 def portfolio_form(request):
+
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
+    meta.set_title("RealDevils|Portfolio:")
+    keys = ['BLOG','Portfolio','make Your Resume','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
 
     user = request.user
     edu_form = EducationForm
@@ -70,13 +83,22 @@ def portfolio_form(request):
         "project":project,
         'education':education,
         'experience':experience,
+        'meta':meta,
     }
     
     return render(request,"portfolio_form.html",context)
 
 @login_required
 def portfolio_basic(request):
+    
 
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
+    meta.set_title("RealDevils|Portfolio:")
+    keys = ['BLOG','Portfolio','make Your Resume','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
     
     user = request.user
     portfolio = Portfolio.objects.filter(user=user).first()
@@ -108,10 +130,21 @@ def portfolio_basic(request):
         else:
             messages.error(request, str(f.error_class))
 
-    return render(request,"portfolio_basic.html",{'form':form})
+    return render(request,"portfolio_basic.html",{'form':form,"meta":meta})
 
 @login_required
 def edit_edu(request,name):
+    
+
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
+    meta.set_title("RealDevils|Portfolio:")
+    keys = ['BLOG','Portfolio','make Your Resume','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
+
+
     user = request.user
     portfolio = Portfolio.objects.filter(user=user).first()
   
@@ -132,11 +165,20 @@ def edit_edu(request,name):
     else:
         f = EducationForm(instance=education)
 
-    return render(request,'portfolio_edit.html',{'f':f})
+    return render(request,'portfolio_edit.html',{'f':f,'meta':meta})
 
 
 @login_required
 def edit_exp(request,name):
+
+
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
+    meta.set_title("RealDevils|Portfolio:")
+    keys = ['BLOG','Portfolio','make Your Resume','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
     user = request.user
     portfolio = Portfolio.objects.filter(user=user).first()
   
@@ -157,11 +199,18 @@ def edit_exp(request,name):
     else:
         f = ExperienceForm(instance=experience)
 
-    return render(request,'portfolio_edit.html',{'f':f})
+    return render(request,'portfolio_edit.html',{'f':f,"meta":meta})
 
 
 @login_required
 def edit_prj(request,name):
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
+    meta.set_title("RealDevils|Portfolio:")
+    keys = ['BLOG','Portfolio','make Your Resume','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
     user = request.user
     portfolio = Portfolio.objects.filter(user=user).first()
   
@@ -182,7 +231,7 @@ def edit_prj(request,name):
     else:
         f = ProjectForm(instance=project)
 
-    return render(request,'portfolio_edit.html',{'f':f})
+    return render(request,'portfolio_edit.html',{'f':f,'meta':meta})
 
 
 

@@ -1,10 +1,13 @@
 {% load static %}
+{% load meta %}
 
 <!DOCTYPE html>
 <html lang=" en ">
     {% for i in portfolio %}
 
 <head>
+	{% include 'meta/meta.html' %}
+
     <meta charset="utf-8" />
     <title> Portfolio |{{ i.name }} </title>
     <meta name="keywords" content="Websites ,Punjab ,India, Ludhiana ,Digital ,RealDevils ,technology,Developers, TechCommunity ">

@@ -10,10 +10,20 @@ from django.contrib import messages
 import smtplib 
 from realDevils.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
+from realDevils.seo_meta import Meta
+
 # Create your views here.
 
 def home(request):
 
+
+    meta = Meta()
+    meta.set_description("The tech community Ludhiana ~ Realdevils , A pod where Curiosity Grows, Collaboration > Competition")
+    meta.set_title("RealDevils|Home:")
+    keys = ['BLOG','Writings','Tech Blogs','articles','Tech Work']
+    meta.set_keys(keys)
+ 
+    meta = meta.as_meta()
     if(request.method == "POST"):
         name    =   request.POST['name']
         email   =   request.POST['email']
@@ -70,7 +80,12 @@ def home(request):
         'projectMisc':projectMisc,
         'skill':skill,
         'team':team,
+        'meta':meta,
 
 
     }
     return render(request,'index.html',context)
+
+def zoho(request):
+
+    return render(request,'verifyforzoho.html')

@@ -50,6 +50,7 @@ body {
 }
 .text-rev{
   color: var(--special-color !important)
+  color: var(--special-color)
 }
 
 h1,
