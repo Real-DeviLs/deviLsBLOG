@@ -105,7 +105,7 @@ Start Call To Action
 					<div class="col-md-6">
 						<h2>We are refining our skill sets in all the domains</h2>
 							<p>Peer learning and practical apsects make one form new comfort zones</p>
-							<img class="img-responsive" src="{% static 'images/about/company-growth.png' %} " alt="">
+							<img class="img-responsive lazy" data-src="{% static 'images/about/company-growth.png' %} " alt="">
 					</div>
 					<div class="col-md-6">
 						<ul class="skill-bar">
@@ -159,7 +159,7 @@ Start Call To Action
 			
 				
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -178,7 +178,7 @@ Start Call To Action
 			<div class="filtr-item col-md-4" data-category="app">
 			
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -196,7 +196,7 @@ Start Call To Action
 			<div class="filtr-item col-md-4" data-category="design">
 		
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -214,7 +214,7 @@ Start Call To Action
 
 			<div class="filtr-item col-md-4" data-category="seo">
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -232,7 +232,7 @@ Start Call To Action
 
 			<div class="filtr-item col-md-4" data-category="mkt">
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital marketing">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital marketing">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -250,7 +250,7 @@ Start Call To Action
 
 			<div class="filtr-item col-md-4" data-category="misc">
 				<div class="portfolio-block">
-					<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+					<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 					<div class="caption">
 						<a class="search-icon image-popup" data-effect="mfp-with-zoom" href="{{ i.image.url }}"
 							data-lightbox="image-1">
@@ -352,7 +352,7 @@ Start Our Team
                <div class="team-member">
 					<div class="member-photo">
 						<!-- member photo -->
-						<img class="img-responsive" src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
+						<img class="img-responsive lazy" data-src="{{ i.image.url }}" alt="RealDEvils TechCommunity Ludhiana Digital">
 						<!-- /member photo -->
 						
 						<!-- member social profile -->
@@ -401,7 +401,7 @@ Start Our Team
 						
 						<!-- client photo -->
 						<div class="client-thumb">
-							<img src="{{ i.images.url }}" class="img-responsive" alt="RealDEvils TechCommunity Ludhiana Digital">
+							<img data-src="{{ i.images.url }}" class="img-responsive lazy" alt="RealDEvils TechCommunity Ludhiana Digital">
 						</div>
 						<!-- /client photo -->
 						
@@ -445,7 +445,7 @@ Start Our Team
 				<article class="col-md-4 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
 					<div class="post-block">
 						<div class="media-wrapper">
-							<img src="{{ i.images.url }}" alt="technical Blog Tech community" class="img-responsive">
+							<img data-src="{{ i.images.url }}" alt="technical Blog Tech community" class="img-responsive lazy">
 						</div>
 						<div class="content">
 							<h3><a href="{% url 'blog_author' author=i.author %}">{{ i.name }}</a></h3>

@@ -36,18 +36,22 @@
 	<!-- CSS
 		================================================== -->
 	<!-- Fontawesome Icon font -->
-	<link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}" media="print" onload="this.media='all'">
 	<!-- bootstrap.min css -->
-	<link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
+	<!-- <link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}"> -->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="{% static 'plugins/animate-css/animate.css' %} ">
+	<!-- <link rel="stylesheet" href="{% static 'plugins/animate-css/animate.css' %} "> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha512-TyUaMbYrKFZfQfp+9nQGOEt+vGu4nKzLk0KaV3nFifL3K8n7lzb8DayTzLOK0pNyzxGJzGRSw78e8xqJhURJ3Q==" crossorigin="anonymous" media="print" onload="this.media='all'" />
 	<!-- Magnific popup css -->
-	<link rel="stylesheet" href=" {% static 'plugins/magnific-popup/dist/magnific-popup.css' %} ">
+	<link rel="stylesheet" href=" {% static 'plugins/magnific-popup/dist/magnific-popup.css' %} " media="print" onload="this.media='all'">
 	<!-- Slick Carousel -->
-	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %} ">
-	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %} ">
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %} " media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %} " media="print" onload="this.media='all'">
 	<!-- Main Stylesheet -->
-	<link rel="stylesheet" href="{% static 'css/style.css' %} ">
+	<link rel="stylesheet" href="{% static 'css/style.css' %} " media="print" onload="this.media='all'">
 
 
 
@@ -120,7 +124,7 @@ Welcome Slider
     
                 <!-- logo -->
                 <a class="navbar-brand logo" href="#body">
-                    <img src="{% static 'images/logo.png' %} " alt="Real-DEvils tech logo" style="height: 80px; width: 80px;" />
+                    <img class="lazy" data-src="{% static 'images/logo.png' %} " alt="Real-DEvils tech logo" style="height: 80px; width: 80px;" />
                     
                 </a>
             <!-- /logo -->
@@ -210,23 +214,25 @@ Welcome Slider
 				<!-- For Dark Mode Togg;le -->
 				
 				<!-- Main jQuery -->
-				<script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+				<!-- <script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script> -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
 				<!-- Bootstrap 3.1 -->
-				<script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+				<!-- <script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script> -->
 				<!-- Slick Carousel -->
-				<script type="text/javascript" src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+				<script async type="text/javascript" src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
 				<!-- Portfolio Filtering -->
 				<script type="text/javascript" src="{% static 'plugins/filterzr/jquery.filterizr.min.js' %}"></script>
 				<!-- Smooth Scroll -->
-				<script type="text/javascript" src="{% static 'plugins/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+				<script async type="text/javascript" src="{% static 'plugins/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
 				<!-- Magnific popup -->
-				<script type="text/javascript" src="{% static 'plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+				<script async type="text/javascript" src="{% static 'plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 				<!-- Google Map API -->
-				<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
+				<!-- <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> -->
 				<!-- Sticky Nav -->
-				<script type="text/javascript" src="{% static 'plugins/Sticky/jquery.sticky.js' %}"></script>
+				<script  type="text/javascript" src="{% static 'plugins/Sticky/jquery.sticky.js' %}"></script>
 				<!-- Number Counter Script -->
-				<script type="text/javascript" src="{% static 'plugins/count-to/jquery.countTo.js' %}"></script>
+				<script async type="text/javascript" src="{% static 'plugins/count-to/jquery.countTo.js' %}"></script>
 				<!-- wow.min Script -->
 				<script type="text/javascript" src="{% static 'plugins/wow/dist/wow.min.js' %}"></script>
 				<!-- Custom js -->
@@ -247,5 +253,59 @@ Welcome Slider
 
 					
 					toggleSwitch.addEventListener('change', switchTheme, false);</script>
+
+
+<script>
+
+	document.addEventListener("DOMContentLoaded", function () {
+		var lazyloadImages;
+
+		if ("IntersectionObserver" in window) {
+			lazyloadImages = document.querySelectorAll(".lazy");
+			var imageObserver = new IntersectionObserver(function (entries, observer) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						var image = entry.target;
+						image.src = image.dataset.src;
+						image.classList.remove("lazy");
+						imageObserver.unobserve(image);
+					}
+				});
+			});
+
+			lazyloadImages.forEach(function (image) {
+				imageObserver.observe(image);
+			});
+		} else {
+			var lazyloadThrottleTimeout;
+			lazyloadImages = document.querySelectorAll(".lazy");
+
+			function lazyload() {
+				if (lazyloadThrottleTimeout) {
+					clearTimeout(lazyloadThrottleTimeout);
+				}
+
+				lazyloadThrottleTimeout = setTimeout(function () {
+					var scrollTop = window.pageYOffset;
+					lazyloadImages.forEach(function (img) {
+						if (img.offsetTop < (window.innerHeight + scrollTop)) {
+							img.src = img.dataset.src;
+							img.classList.remove('lazy');
+						}
+					});
+					if (lazyloadImages.length == 0) {
+						document.removeEventListener("scroll", lazyload);
+						window.removeEventListener("resize", lazyload);
+						window.removeEventListener("orientationChange", lazyload);
+					}
+				}, 20);
+			}
+
+			document.addEventListener("scroll", lazyload);
+			window.addEventListener("resize", lazyload);
+			window.addEventListener("orientationChange", lazyload);
+		}
+	})
+</script>
 			</body>
 		</html>

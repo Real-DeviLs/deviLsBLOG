@@ -109,8 +109,8 @@
         <div class="row ">
             <div class="col-lg-4 offset-md-1">
                 <div class="card" id="profile-card"> <a href="#"> <img alt="RealDEvils TechCommunity Ludhiana Digital"
-                            src="{{ portfolio.image.url }}"
-                            class="profile-img" /> </a>
+                            data-src="{{ portfolio.image.url }}"
+                            class="profile-img lazy" /> </a>
                         
                             {% if portfolio.name %}
                     <h1 class="profile-name">{{ portfolio.name }}</h1>
@@ -169,8 +169,8 @@
 
                     <div class="row" id="project-card">
                         <div class="col-md-6"> <img alt="RealDEvils TechCommunity Ludhiana Digital"
-                                src="{{ j.image.url }}"
-                                class="project-img" /> </div>
+                                data-src="{{ j.image.url }}"
+                                class="project-img lazy" /> </div>
                         <div class="col-md-4 center">
                             <h4 class="experience-title">{{ j.title }}</h4>
                             <h6 class="experience-info"></h6>
@@ -201,8 +201,8 @@
                     {% for k in experience %}
                     <div class="row">
                         <div class="col-md-2"> <img
-                                src="{{ k.image.url }}"
-                                class="company-logo" /> </div>
+                                data-src="{{ k.image.url }}"
+                                class="company-logo lazy" /> </div>
                         <div class="col-md-6">
                             <h4 class="experience-title">{{ k.post }}</h4>
                             <h6 class="experience-info">{{ k.company }}</h6>
@@ -231,8 +231,8 @@
                         {% for l in education %}
                     <div class="row">
                         <div class="col-md-2"> <img alt="RealDEvils TechCommunity Ludhiana Digital"
-                                src="{{ l.image.url }}"
-                                class="company-logo" /> </div>
+                                data-src="{{ l.image.url }}"
+                                class="company-logo lazy" /> </div>
                         <div class="col-md-6">
                             <h4 class="experience-title">{{ l.title }}</h4>
                             <h6 class="experience-info">{{ l.institution }}</h6>
@@ -301,6 +301,58 @@
             });
         }
     </script>
+    <script>
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var lazyloadImages;
+
+			if ("IntersectionObserver" in window) {
+				lazyloadImages = document.querySelectorAll(".lazy");
+				var imageObserver = new IntersectionObserver(function (entries, observer) {
+					entries.forEach(function (entry) {
+						if (entry.isIntersecting) {
+							var image = entry.target;
+							image.src = image.dataset.src;
+							image.classList.remove("lazy");
+							imageObserver.unobserve(image);
+						}
+					});
+				});
+
+				lazyloadImages.forEach(function (image) {
+					imageObserver.observe(image);
+				});
+			} else {
+				var lazyloadThrottleTimeout;
+				lazyloadImages = document.querySelectorAll(".lazy");
+
+				function lazyload() {
+					if (lazyloadThrottleTimeout) {
+						clearTimeout(lazyloadThrottleTimeout);
+					}
+
+					lazyloadThrottleTimeout = setTimeout(function () {
+						var scrollTop = window.pageYOffset;
+						lazyloadImages.forEach(function (img) {
+							if (img.offsetTop < (window.innerHeight + scrollTop)) {
+								img.src = img.dataset.src;
+								img.classList.remove('lazy');
+							}
+						});
+						if (lazyloadImages.length == 0) {
+							document.removeEventListener("scroll", lazyload);
+							window.removeEventListener("resize", lazyload);
+							window.removeEventListener("orientationChange", lazyload);
+						}
+					}, 20);
+				}
+
+				document.addEventListener("scroll", lazyload);
+				window.addEventListener("resize", lazyload);
+				window.addEventListener("orientationChange", lazyload);
+			}
+		})
+	</script>
 </body>
 
 </html>
