@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+
+<section id="contact-us" class="contact-us section-bg">
+	<div class="container">
+		<div class="row">
+			
+			<!-- section title -->
+			<div class="title text-center wow fadeIn" data-wow-duration="500ms">
+				<h2>Basic  <span class="color">Details</span></h2>
+				<div class="border"></div>
+			</div>
+			<!-- /section title -->
+		
+				<form id="contact-form" method="POST" action="" role="form" enctype="multipart/form-data">
+					{% csrf_token %}
+
+
+			<div  class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+
+
+
+
+                <div class="form-group">
+                    {% render_field form.name class+="form-control" placeholder="Your Name"  %}
+					</div>
+					
+					<div class="form-group">
+                    {% render_field form.tagline class+="form-control" placeholder="Your Tagline" %}
+
+					</div>
+					
+					<div class="form-group">
+                    {% render_field form.github_link class+="form-control" placeholder="Github Profile Link" %}
+
+					</div>
+					
+					<div class="form-group">
+                    {% render_field form.github_username class+="form-control" placeholder="github Username"%}
+
+					</div>
+
+                    <div class="form-group">
+
+                        {% render_field form.linkedin_link class+="form-control" placeholder="linkedin Profile" %}
+    
+                    </div>
+                    <div class="form-group">
+
+                        {% render_field form.country class+="form-control" placeholder="Country" %}
+    
+                    </div>
+					
+					
+					<div class="form-group">
+                        {% render_field form.email class+="form-control" placeholder="Email" type="email" %}
+
+					</div>
+				
+			</div>
+			<!-- / End Contact Details -->
+				
+			<!-- Contact Form -->
+			<div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+					
+					
+					<div class="form-group">
+                    {% render_field form.skills class+="form-control" placeholder="Skills" %}
+
+					</div>
+					
+					<div class="form-group">
+					
+                    {% render_field form.languages class+="form-control" placeholder="Wakatime Language Url" %}
+
+					</div>
+					
+					<div class="form-group">
+                    {% render_field form.activity  class+="form-control" placeholder="Wakatime Activity Url" %}
+
+					</div>
+					<div class="form-group">
+                        {% render_field form.about class+="form-control" placeholder="About You" %}
+    
+                        </div>
+                    
+
+                        <div class="form-group">
+                            {% render_field form.image class+="form-control" placeholder="Photograph" %}
+        
+                            </div>
+                            
+					
+					
+					<button type="submit" class="btn btn-transparent"> Proceed</button>
+											
+					
+			</div>
+				</form>
+
+			<!-- ./End Contact Form -->
+		
+		</div> <!-- end row -->
+	</div> <!-- end container -->
+	
+	
+</section> <!-- end section -->
+	
+<!-- 
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form | crispy }}
+
+    <input type="submit">
+</form>
+ -->
+
+
+
+{% endblock content %}

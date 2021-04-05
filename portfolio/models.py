@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -7,19 +7,20 @@ Trend_CHOICES = (("Y", "Yes"), ("N", "No"))
 
 
 class Portfolio(models.Model):
-    name        =   models.CharField(max_length=50)
-    tagline     =   models.TextField()
-    github_link      =   models.URLField()
-    github_username  =  models.CharField(max_length=70)
-    linkedin_link   = models.URLField()
-    country         = models.CharField(max_length=50)
-    email          = models.EmailField()
-    skills         = models.TextField()
-    languages      = models.URLField()
-    activity       = models.URLField()
-    about           = models.TextField()
-    trends = models.CharField(choices=Trend_CHOICES, max_length=128)
-    image       = models.ImageField(upload_to='projects/',default='')
+    user                = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True,unique=False)
+    name                = models.CharField(max_length=50)
+    tagline             = models.TextField()
+    github_link         = models.URLField()
+    github_username     = models.CharField(max_length=70)
+    linkedin_link       = models.URLField()
+    country             = models.CharField(max_length=50)
+    email               = models.EmailField()
+    skills              = models.TextField()
+    languages           = models.URLField(null=True,default="")
+    activity            = models.URLField(null=True,default="")
+    about               = models.TextField()
+    trends              = models.CharField(choices=Trend_CHOICES, max_length=128)
+    image               = models.ImageField(upload_to='Portfolios/',default='')
 
     def __str__(self):
         return self.name

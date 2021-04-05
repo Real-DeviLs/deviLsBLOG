@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="LoginForm">
+  <div class="container">
+      <div class="row">
+          
+          <div class="col-lg-6">
+              <h3 class="LoginFormTitle">Register</h3><!-- /.LoginFormTitle -->
+              <form method="POST" class="LoginFormForm">
+                  {% csrf_token %}
+                  <div class="LoginFormField">
+                    
+                    <i class="fa fa-envelope-o"></i>
+                    <label>First Name </label>
+                    {{ form.first_name }}    
+                    {{ form.first_name.errors }}                    <i class="fa fa-user"></i>
+                  </div><!-- /.LoginFormField -->
+                  <div class="LoginFormField">
+                    
+                    <i class="fa fa-envelope-o"></i>
+                    <label>Last Name </label>
+                    {{ form.last_name }}   
+                    {{ form.last_name.errors }}                   <i class="fa fa-user"></i>
+                </div><!-- /.LoginFormField -->
+                  <div class="LoginFormField">
+                    
+                    <i class="fa fa-envelope-o"></i>
+                    <label>Email </label>
+                    {{ form.email }}    
+                    {{ form.email.errors }}                    <i class="fa fa-envelope-o"></i>
+                  </div><!-- /.LoginFormField -->
+                  <div class="LoginFormField">
+                    
+                    <i class="fa fa-envelope-o"></i>
+                    <label>Password </label>
+                    {{ form.password1 }}    
+                    {{ form.password1.errors }}                    <i class="fa fa-lock"></i>
+                  </div><!-- /.LoginFormField -->
+                  <div class="LoginFormField">
+                    
+                    <i class="fa fa-envelope-o"></i>
+                    <label>Re-enter Password </label>
+                    {{ form.password2 }}     
+                    {{ form.password2.errors }}                 <i class="fa fa-lock"></i>
+                </div><!-- /.LoginFormField -->
+                  
+                  <div class="LoginFormBottom">
+                      <button type="submit" class="themeButton LoginFormBtn LoginFormBtn-two">Register <span>+</span></button>
+                      <div class="LoginFormSocial">
+                      </div><!-- /.LoginFormSocial -->
+                  </div><!-- /.LoginFormBottom -->
+              </form><!-- /.LoginFormForm -->
+          </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /.LoginForm -->
+
+{% endblock content%}

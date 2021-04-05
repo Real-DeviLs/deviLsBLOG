@@ -4,13 +4,13 @@ from .models import Thought,Skill,Projects
 from datetime import datetime
 import calendar
 from portfolio.models import Portfolio
+from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 import smtplib 
 from realDevils.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
 # Create your views here.
-
 
 def home(request):
 

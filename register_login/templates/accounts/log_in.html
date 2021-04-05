@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+
+{% block content %}
+<section class="LoginForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="LoginFormTitle">Login</h3><!-- /.LoginFormTitle -->
+                <form method="POST" class="LoginFormForm">
+                    {% csrf_token %}
+                    <div class="LoginFormField">
+                        {{ form.email.errors }}
+                        <i class="fa fa-envelope-o"></i>
+                        <label>Email </label>
+                        {{ form.email }}                       
+                    </div><!-- /.LoginFormField -->
+                    <div class="LoginFormField">
+                        {{ form.password.errors }}
+                        <label>Password</label>
+                        {{ form.password }}                        <i class="fa fa-lock"></i>
+                    </div><!-- /.LoginFormField -->
+                    <div class="LoginFormBottom">
+                        <button type="submit" class="themeButton LoginFormBtn">Login <span>+</span></button>
+                        <div class="LoginFormSocial">
+                            <span>Or login with</span>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="fa fa-google"></a>
+                        </div><!-- /.LoginFormSocial -->
+                    </div><!-- /.LoginFormBottom -->
+                    <p class="LoginFormCheckBox">
+                        <input type="checkbox" id="test1" name="radio-group" checked>
+                        <label for="test1">Remember Me</label>
+                    </p>
+                    <p>    <a href="{% url 'accounts:restore_password' %}">{% trans 'Forgot your password?' %}</a>                    </p>
+                </form><!-- /.LoginFormForm -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.LoginForm -->
+
+{% endblock content%}

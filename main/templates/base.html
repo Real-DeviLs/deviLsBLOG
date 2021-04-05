@@ -129,6 +129,18 @@ Welcome Slider
                 <li><a data-scroll href="{% url 'home' %}#our-team">Team</a></li>
                 <li><a data-scroll href="{% url 'blogs' %}">Blog</a></li>
                 <li><a data-scroll href="{% url 'home' %}#contact-us">Contact</a></li>
+                <li><a data-scroll href="{% url 'portfolio_basic' %}">Portfolio generator</a></li>
+
+
+				{% if user.is_authenticated %}
+			
+			<li> <a data-scroll href="{% url 'accounts:log_out' %}">Logout </a></li>
+
+			{% else %}
+			<li> <a data-scroll href="{% url 'accounts:log_in' %}">Login </a></li>
+
+			<li> <a  data-scroll href="{% url 'accounts:sign_up' %}">Signup</a></li>
+			{% endif %}
             </ul>
         </nav>
         <!-- /main nav -->

@@ -20,13 +20,21 @@ from django.conf import settings
 import main
 import blog
 import newsletter
-
-
+# import authentications
+import portfolio
+import register_login
+from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
     path('',include('blog.urls')),
     path('',include('newsletter.urls')),
+    # path('',include('authentications.urls')),
+    path('',include('portfolio.urls')),
+    path('',include('register_login.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('', include('social_django.urls', namespace='social')),
+    path('logout/',LogoutView.as_view(template_name=settings.LOGOUT_REDIRECT_URL),name='logout'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
