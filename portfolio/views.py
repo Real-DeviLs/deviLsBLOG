@@ -30,8 +30,10 @@ def portfolio(request,name):
     return render(request,'portfolio.html',context)
 
 
-@login_required
+# @login_required(login_url='')
+@login_required(login_url='/accounts/login/')
 def portfolio_form(request):
+
 
     meta = Meta()
     meta.set_description("The tech community Ludhiana ~ Realdevils , Portfolio Maker")
