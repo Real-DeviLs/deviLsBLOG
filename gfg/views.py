@@ -3,6 +3,7 @@ from .models import Leaderboard ,Questions
 from datetime import datetime
 from .scraper import fetchResponse
 from realDevils.seo_meta import Meta
+from discord_webhook import DiscordWebhook, DiscordEmbed
 
 #Create your views here.
 
@@ -37,6 +38,8 @@ def gfgDaily(request):
 
 def update(request):
 
+    
+
     users = Leaderboard.objects.all()
 
     # userlist = ['SumitKhandelwal'] 
@@ -55,5 +58,18 @@ def update(request):
         
         if questions[0].second in response["solvedStats"][questions[0].dif2]["questions"]:
             Leaderboard.objects.filter(username = i).update(second = True)
+
+
+    
+    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835622124914868286/ucfQ7tzsrmpQta81DgZOZdmW8LaCuFAKt_FcxQZqBS1ebSkrsl80yiKrmDXTsz2-M8fs')
+
+    # create embed object for webhook
+    # you can set the color as a decimal (color=242424) or hex (color='03b2f8') number
+    embed = DiscordEmbed(title='LeaderBoard Updated', description='Hey all LeaderBoard is Updated do check out at \n  https://www.realdevils.com/gfgdaily', color='03b2f8')
+
+    # add embed object to webhook
+    webhook.add_embed(embed)
+
+    response = webhook.execute()
 
     return HttpResponse("done")
