@@ -19,7 +19,8 @@ def gfgDaily(request):
 
     if request.method == "POST":
         username = request.POST['uname']
-        leaderboard = Leaderboard(username=username)
+        
+        leaderboard = Leaderboard(username=username,first=False,second=False,date=datetime.now().strftime('%Y-%m-%d'),weekly=0  )
         leaderboard.save()
 
 
