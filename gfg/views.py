@@ -48,8 +48,8 @@ def update(request):
     for i in userlist:
 
         response = fetchResponse(i)
-        Leaderboard.objects.filter(username = i).update(weekly = response["weeklyCodingScore"])
-
+        Leaderboard.objects.filter(username = i).update(weekly = response["weeklyCodingScore"],date=datetime.now().strftime('%Y-%m-%d'))
+        
         if questions[0].first in response["solvedStats"][questions[0].dif1]["questions"]:
             Leaderboard.objects.filter(username = i).update(first = True)
         
