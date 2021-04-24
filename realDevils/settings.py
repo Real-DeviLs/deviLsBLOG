@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'register_login',
     'social_django',
     'django.contrib.sitemaps',
+    'gfg',
     'meta',  #maintian this at the end 
 
 ]

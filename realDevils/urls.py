@@ -24,7 +24,7 @@ import newsletter
 import portfolio
 import register_login
 from django.contrib.auth.views import LogoutView
-
+import gfg
 from main.sitemaps import StaticViewSitemap,PortfolioSitemap,BlogSitemap
 from django.contrib.sitemaps.views import sitemap
 
@@ -41,6 +41,7 @@ urlpatterns = [
     path('',include('main.urls')),
     path('',include('blog.urls')),
     path('',include('newsletter.urls')),
+    path('',include('gfg.urls')),
     # path('',include('authentications.urls')),
     path('',include('portfolio.urls')),
     path('',include('register_login.urls')),

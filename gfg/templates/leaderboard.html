@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="title text-center wow fadeIn" data-wow-duration="1500ms" style="margin-top: 5px;" >
+    <h2>The Daily Question  <span class="color">Challenge</span> </h2>
+    <div class="border"></div>
+</div>
+
+
+
+
+<div class="contact-form wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+
+    <div  class=" col-md-4" >
+        <h2> Join the journey~ </h2>
+        <p>2 Questions Daily and we grow together</p>
+    </div>
+  
+    <div class="col-md-4" >
+    <form id="contact-form" method="post"  role="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" placeholder="GFG UserName" class="form-control" name="uname" id="name">
+        </div>
+        
+
+    </div>
+        
+        <div class="col-md-4">
+
+            <button type="submit" class="btn btn-transparent">Count me in</button>
+
+            
+        </div>
+                                
+        
+    </form>
+</div>
+
+
+
+
+<div class="container"  style="margin-top: 10% ;"  >
+    <h2> Today's Questions ~ Go Grab some  </h2>
+    <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col">Questions</th>
+            <!-- <th scope="col">UserName</th> -->
+            <!-- <th scope="col">Q1</th> -->
+            <!-- <th scope="col">Q2</th> -->
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in que %}
+          <tr>
+            <th scope="row"> <a href="{{i.first}}">{{i.first}}</a> </th>
+          </tr>
+          <tr>
+            <th scope="row"> <a href="{{i.second}}">{{i.second}}</a> </th>
+          </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+    
+</div>
+
+
+
+
+
+
+<div class="container" >
+    <h2>Today's LeaderBoard ~ </h2>
+    <table class="table" >
+        <thead>
+          <tr>
+            <!-- <th scope="col">No of solved</th> -->
+            <th scope="col">UserName</th>
+            <th scope="col">Q1</th>
+            <th scope="col">Q2</th>
+            <th scope="col">weekly score</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in leaderboard %}
+
+          <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{ i.username }}</td>
+            <td>{{ i.first }}</td>
+            <td>{{ i.second }}</td>
+            <td>{{ i.weekly }}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content%}
