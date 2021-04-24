@@ -61,7 +61,7 @@ def update(request):
 
 
     
-    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835622124914868286/ucfQ7tzsrmpQta81DgZOZdmW8LaCuFAKt_FcxQZqBS1ebSkrsl80yiKrmDXTsz2-M8fs')
+    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835633106689851442/ep_GF8vgmC9HZvbs8Uvt6wQSVHHhvKdk6iEs4JZGLdM-aukI7G00ete4qVjSpYPHLn3z')
 
     # create embed object for webhook
     # you can set the color as a decimal (color=242424) or hex (color='03b2f8') number
