@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,HttpResponse
-from .models import Leaderboard ,Questions
+from .models import Leaderboard ,Questions, Daily_Question
 from datetime import datetime
 from .scraper import fetchResponse
 from realDevils.seo_meta import Meta
 from discord_webhook import DiscordWebhook, DiscordEmbed
+from django.contrib import messages
 
 #Create your views here.
 
@@ -19,14 +20,20 @@ def gfgDaily(request):
     meta = meta.as_meta()
 
     if request.method == "POST":
-        username = request.POST['uname']
-        
-        leaderboard = Leaderboard(username=username,first=False,second=False,date=datetime.now().strftime('%Y-%m-%d'),weekly=0  )
-        leaderboard.save()
+        username = request.POST['uname']    
+        leaderboard = Leaderboard(username=username)
+        try:
+            leaderboard.save()
+            messages.info(request, "Welcome to party")
+            
+        except:
+            messages.info(request, "Username already registered!")
+            return redirect('gfgDaily')
+        return redirect('gfgDaily')
 
-
-    que             = Questions.objects.filter(date=datetime.now().strftime('%Y-%m-%d'))
-    leaderboard     = Leaderboard.objects.filter(date=datetime.now() .strftime('%Y-%m-%d')) 
+    daily_question = Daily_Question.objects.all().first()
+    que             = Questions.objects.filter(daily_question=daily_question)
+    leaderboard     = Leaderboard.objects.all()
     
     context ={
         'que':que,
@@ -37,29 +44,13 @@ def gfgDaily(request):
     return render(request,"leaderboard.html",context)
 
 def update(request):
-
-    
-
-    users = Leaderboard.objects.all()
-
-    # userlist = ['SumitKhandelwal'] 
-    userlist = []
-    for i in users:
-        userlist.append(i.username)
-   
-    questions = Questions.objects.filter(date=datetime.now().strftime('%Y-%m-%d'))
-    for i in userlist:
-
-        response = fetchResponse(i)
-        Leaderboard.objects.filter(username = i).update(weekly = response["weeklyCodingScore"],date=datetime.now().strftime('%Y-%m-%d'))
-        
-        if questions[0].first in response["solvedStats"][questions[0].dif1]["questions"]:
-            Leaderboard.objects.filter(username = i).update(first = True)
-        
-        if questions[0].second in response["solvedStats"][questions[0].dif2]["questions"]:
-            Leaderboard.objects.filter(username = i).update(second = True)
-
-
+    daily_question = Daily_Question.objects.all().first()
+    for user in Leaderboard.objects.all():
+        response, weekly_score = fetchResponse(user.username)
+        for ques in Questions.objects.filter(daily_question=daily_question):
+            if ques.url in response:
+                user.questions.add(ques)
+                Leaderboard.objects.filter(username=user.username).update(weekly_score = str(weekly_score))
     
     webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835633106689851442/ep_GF8vgmC9HZvbs8Uvt6wQSVHHhvKdk6iEs4JZGLdM-aukI7G00ete4qVjSpYPHLn3z')
 

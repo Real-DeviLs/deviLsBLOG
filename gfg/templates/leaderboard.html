@@ -56,11 +56,11 @@
         <tbody>
             {% for i in que %}
           <tr>
-            <th scope="row"> <a href="{{i.first}}">{{i.first}}</a> </th>
+            <th scope="row"> <a href="{{i.url}}">{{i.name}}</a> </th>
           </tr>
-          <tr>
-            <th scope="row"> <a href="{{i.second}}">{{i.second}}</a> </th>
-          </tr>
+          <!-- <tr> -->
+            <!-- <th scope="row"> <a href="{{i.second}}">{{i.second}}</a> </th> -->
+          <!-- </tr> -->
            {% endfor %}
         </tbody>
       </table>
@@ -79,8 +79,9 @@
           <tr>
             <!-- <th scope="col">No of solved</th> -->
             <th scope="col">UserName</th>
-            <th scope="col">Q1</th>
-            <th scope="col">Q2</th>
+            {% for q in que %}
+            <th scope="col">Question</th>
+            {% endfor %}
             <th scope="col">weekly score</th>
           </tr>
         </thead>
@@ -90,9 +91,17 @@
           <tr>
             <!-- <th scope="row">1</th> -->
             <td>{{ i.username }}</td>
-            <td>{{ i.first }}</td>
-            <td>{{ i.second }}</td>
-            <td>{{ i.weekly }}</td>
+              {% for qu in que %}
+                {% if qu in i.questions.all%}
+                <td>{{ qu.name }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+              {% endfor %}
+            
+            {% if i.weekly_score %}
+            <td>{{ i.weekly_score }}</td>
+            {% endif %}
           </tr>
 
           {% endfor %}
