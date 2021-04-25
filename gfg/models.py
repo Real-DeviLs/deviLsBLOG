@@ -34,22 +34,25 @@ class Leaderboard(models.Model):
 
 
 
-def sendNotif(sender,instance,**kwargs):
+def sendNotif(sender,instance,created,**kwargs):
     
-    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835622124914868286/ucfQ7tzsrmpQta81DgZOZdmW8LaCuFAKt_FcxQZqBS1ebSkrsl80yiKrmDXTsz2-M8fs')
+    if created:
+        pass
+    else:
+        webhook = DiscordWebhook(url='https://discord.com/api/webhooks/835622124914868286/ucfQ7tzsrmpQta81DgZOZdmW8LaCuFAKt_FcxQZqBS1ebSkrsl80yiKrmDXTsz2-M8fs')
 
-    # create embed object for webhook
-    # you can set the color as a decimal (color=242424) or hex (color='03b2f8') number
-    ques = Questions.objects.filter(daily_question=instance)
-    s=""
-    for ques in Questions.objects.filter(daily_question=instance):
-        s+=ques.url+'\n'
-    embed = DiscordEmbed(title='New Questions in house', description="@everyone  @Member "+"\n\n"+ s, color='03b2f8')
+        # create embed object for webhook
+        # you can set the color as a decimal (color=242424) or hex (color='03b2f8') number
+        ques = Questions.objects.filter(daily_question=instance)
+        s=""
+        for ques in Questions.objects.filter(daily_question=instance):
+            s+=ques.url+'\n'
+        embed = DiscordEmbed(title='New Questions in house', description="@everyone  @Member "+"\n\n"+ s, color='03b2f8')
 
-    # add embed object to webhook
-    webhook.add_embed(embed)
+        # add embed object to webhook
+        webhook.add_embed(embed)
 
-    response = webhook.execute()
+        response = webhook.execute()
 
 post_save.connect(sendNotif,Daily_Question)
 
