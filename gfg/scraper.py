@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests
+from .models import Leaderboard
 
 def fetchResponse(username):
     li = []
@@ -13,5 +14,6 @@ def fetchResponse(username):
             for div in soup.findAll('li', attrs={'class':'mdl-cell mdl-cell--6-col mdl-cell--12-col-phone'}):
                 li.append(div.find('a')['href'])
     except:
+#        Leaderboard.objects.filter(username=username).delete()
         return li,0
     return li, weekly_score
